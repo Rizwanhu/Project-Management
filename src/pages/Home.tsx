@@ -67,46 +67,43 @@ const Home = () => {
                       Compare
                       <ArrowRight className="h-4 w-4" />
                     </Button>
-                    <Button variant="secondary" onClick={handleViewSummary} className="gap-2">
-                      View Summary
-                      <ArrowRight className="h-4 w-4" />
-                    </Button>
+                   
                   </div>
                 </div>
               </CardContent>
             </Card>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-              <Link to="/library">
-                <Button size="lg" className="w-full gap-2 sm:w-auto">
-                  <BookOpen className="h-5 w-5" />
-                  Go to Standards Library
-                </Button>
-              </Link>
-              <Link to="/compare">
-                <Button size="lg" variant="secondary" className="w-full gap-2 sm:w-auto">
-                  <GitCompare className="h-5 w-5" />
-                  Compare Topics
-                </Button>
-              </Link>
-              <Link to="/generator">
-                <Button size="lg" className="w-full gap-2 sm:w-auto">
-                  Customize your plan
-                </Button>
-              </Link>
-              <Button size="lg" variant="outline" className="w-full gap-2 sm:w-auto" onClick={handleViewBibliography}>
-                <FileText className="h-5 w-5" />
-                Open Bibliography for Topic
-              </Button>
-              <Link to="/insights">
-                <Button size="lg" variant="outline" className="w-full gap-2 sm:w-auto">
-                  <BarChart3 className="h-5 w-5" />
-                  View Insights Dashboard
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
+  <Link to="/library">
+    <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
+      <BookOpen className="h-5 w-5" />
+      Go to Standards Library
+    </Button>
+  </Link>
+  <Link to="/compare">
+    <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
+      <GitCompare className="h-5 w-5" />
+      Compare Topics
+    </Button>
+  </Link>
+  <Link to="/generator">
+    <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
+      Customize your plan
+    </Button>
+  </Link>
+  <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white" onClick={handleViewBibliography}>
+    <FileText className="h-5 w-5" />
+    Open Bibliography for Topic
+  </Button>
+  <Link to="/generator">
+    <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
+      <BarChart3 className="h-5 w-5" />
+      Generate Custom Guide
+    </Button>
+  </Link>
+</div>
+</div>
+</div>
       </section>
 
       {/* Features Section */}
@@ -173,7 +170,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="text-center">
-                <div className="mb-2 text-4xl font-bold text-accent">5</div>
+                <div className="mb-2 text-4xl font-bold text-accent">33</div>
                 <div className="text-sm uppercase tracking-wide text-muted-foreground">
                   Key Topics Covered
                 </div>

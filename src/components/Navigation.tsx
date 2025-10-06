@@ -11,9 +11,9 @@ const Navigation = () => {
     { path: "/", label: "Home", icon: null },
     { path: "/library", label: "Standards Library", icon: BookOpen },
     { path: "/compare", label: "Compare Topics", icon: GitCompare },
-    { path: "/summary", label: "Summary", icon: FileText },
+  
     { path: "/bibliography", label: "Bibliography", icon: FileText },
-    { path: "/insights", label: "Insights Dashboard", icon: BarChart3 },
+  
     { path: "/generator", label: "Process Generator", icon: Settings },
   ];
 

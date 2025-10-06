@@ -8,10 +8,10 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Library from "./pages/Library";
 import Compare from "./pages/Compare";
-import Insights from "./pages/Insights";
+
 import Generator from "./pages/Generator";
 import NotFound from "./pages/NotFound";
-import Summary from "./pages/Summary";
+
 import Bibliography from "./pages/Bibliography";
 
 const queryClient = new QueryClient();
@@ -29,9 +29,9 @@ const App = () => (
               <Route path="/library" element={<Library />} />
               <Route path="/library/:standardId/:sectionId" element={<Library />} />
               <Route path="/compare" element={<Compare />} />
-              <Route path="/summary" element={<Summary />} />
+
               <Route path="/bibliography" element={<Bibliography />} />
-              <Route path="/insights" element={<Insights />} />
+
               <Route path="/generator" element={<Generator />} />
             </Route>
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

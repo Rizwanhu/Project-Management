@@ -142,93 +142,102 @@ const Library = () => {
 
               {/* Main Content */}
               <div className="space-y-6 lg:col-span-2">
-                {Object.entries(stdData.sections).map(([secId, section]: [string, any]) => (
-                  <Card key={secId} id={`section-${secId}`} className="scroll-mt-20">
-                    <CardHeader>
-                      <div className="flex items-start justify-between">
+                {Object.entries(stdData.sections).map(([secId, section]: [string, any]) => {
+                  // Get references for this section
+                  const references = getReferencesForTopic(secId, stdId as any);
+                  
+                  return (
+                    <Card key={secId} id={`section-${secId}`} className="scroll-mt-20">
+                      <CardHeader>
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <Badge className={`mb-2 bg-${stdId}`}>{stdData.name}</Badge>
+                            <CardTitle className="text-xl">{section.title}</CardTitle>
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => toggleBookmark(`${stdId}-${secId}`)}
+                          >
+                            <Bookmark
+                              className={`h-5 w-5 ${
+                                bookmarks.includes(`${stdId}-${secId}`)
+                                  ? "fill-primary text-primary"
+                                  : ""
+                              }`}
+                            />
+                          </Button>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
                         <div>
-                          <Badge className={`mb-2 bg-${stdId}`}>{stdData.name}</Badge>
-                          <CardTitle className="text-xl">{section.title}</CardTitle>
+                          <p className="text-sm leading-relaxed text-foreground">{section.content}</p>
                         </div>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => toggleBookmark(`${stdId}-${secId}`)}
-                        >
-                          <Bookmark
-                            className={`h-5 w-5 ${
-                              bookmarks.includes(`${stdId}-${secId}`)
-                                ? "fill-primary text-primary"
-                                : ""
-                            }`}
-                          />
-                        </Button>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div>
-                        <p className="text-sm leading-relaxed text-foreground">{section.content}</p>
-                      </div>
 
-                      <div>
-                        <h4 className="mb-2 text-sm font-semibold text-foreground">Key Points:</h4>
-                        <ul className="space-y-2">
-                          {section.keyPoints.map((point: string, index: number) => (
-                            <li key={index} className="flex items-start gap-2 text-sm">
-                              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                              <span className="text-muted-foreground">{point}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div>
-                        <h4 className="mb-2 text-sm font-semibold text-foreground">
-                          Key Practices:
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {section.practices.map((practice: string, index: number) => (
-                            <Badge key={index} variant="secondary" className="text-xs">
-                              {practice}
-                            </Badge>
-                          ))}
+                        <div>
+                          <h4 className="mb-2 text-sm font-semibold text-foreground">Key Points:</h4>
+                          <ul className="space-y-2">
+                            {section.keyPoints.map((point: string, index: number) => (
+                              <li key={index} className="flex items-start gap-2 text-sm">
+                                <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                                <span className="text-muted-foreground">{point}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                      </div>
 
-                      <div className="flex gap-2 pt-2">
-                        <Link to={`/compare?topic=${secId}`}>
-                          <Button variant="outline" size="sm">
-                            Compare with Other Standards
-                          </Button>
-                        </Link>
-                        <Link to={`/bibliography?topic=${secId}`}>
-                          <Button variant="ghost" size="sm">
-                            View Bibliography
-                          </Button>
-                        </Link>
-                      </div>
+                        <div>
+                          <h4 className="mb-2 text-sm font-semibold text-foreground">
+                            Key Practices:
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {section.practices.map((practice: string, index: number) => (
+                              <Badge key={index} variant="secondary" className="text-xs">
+                                {practice}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
 
-                      {/* References for this section */}
-                      <div className="pt-4">
-                        <h4 className="mb-2 text-sm font-semibold text-foreground">References</h4>
-                        <ul className="list-disc pl-5 text-sm">
-                          {getReferencesForTopic(secId, stdId as any).map((ref) => (
-                            <li key={ref.id} className="mb-1">
-                              <a
-                                href={buildPdfUrl(ref.bookPath, ref.page)}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="text-primary underline-offset-2 hover:underline"
-                              >
-                                {ref.title} (p. {ref.page})
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                        <div className="flex gap-2 pt-2">
+                          <Link to={`/compare?topic=${secId}`}>
+                            <Button variant="outline" size="sm">
+                              Compare with Other Standards
+                            </Button>
+                          </Link>
+                          {references.length > 0 && (
+                            <Link to={`/bibliography?topic=${secId}`}>
+                              <Button variant="ghost" size="sm">
+                                View Bibliography
+                              </Button>
+                            </Link>
+                          )}
+                        </div>
+
+                        {/* References for this section - Only show if references exist */}
+                        {references.length > 0 && (
+                          <div className="pt-4">
+                            <h4 className="mb-2 text-sm font-semibold text-foreground">References</h4>
+                            <ul className="list-disc pl-5 text-sm">
+                              {references.map((ref) => (
+                                <li key={ref.id} className="mb-1">
+                                  <a
+                                    href={buildPdfUrl(ref.bookPath, ref.page)}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="text-primary underline-offset-2 hover:underline"
+                                  >
+                                    {ref.title} (p. {ref.page})
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </div>
             </div>
           </TabsContent>
