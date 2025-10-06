@@ -86,11 +86,11 @@ const Home = () => {
       Compare Topics
     </Button>
   </Link>
-  <Link to="/generator">
+  {/* <Link to="/generator">
     <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
       Customize your plan
     </Button>
-  </Link>
+  </Link> */}
   <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white" onClick={handleViewBibliography}>
     <FileText className="h-5 w-5" />
     Open Bibliography for Topic
