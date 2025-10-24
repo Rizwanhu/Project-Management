@@ -8,11 +8,10 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Library from "./pages/Library";
 import Compare from "./pages/Compare";
-
 import Generator from "./pages/Generator";
 import NotFound from "./pages/NotFound";
-
 import Bibliography from "./pages/Bibliography";
+import Phase2 from "@/pages/Phase2"; // ✅ Import placed correctly
 
 const queryClient = new QueryClient();
 
@@ -29,12 +28,12 @@ const App = () => (
               <Route path="/library" element={<Library />} />
               <Route path="/library/:standardId/:sectionId" element={<Library />} />
               <Route path="/compare" element={<Compare />} />
-
               <Route path="/bibliography" element={<Bibliography />} />
-
               <Route path="/generator" element={<Generator />} />
+              <Route path="/phase2" element={<Phase2 />} /> {/* ✅ Added here properly */}
             </Route>
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+
+            {/* ✅ Keep NotFound at bottom as catch-all */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

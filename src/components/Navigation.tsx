@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { BookOpen, GitCompare, BarChart3, Settings, FileText } from "lucide-react";
+import { BookOpen, GitCompare, BarChart3, Settings, FileText, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
@@ -11,10 +11,9 @@ const Navigation = () => {
     { path: "/", label: "Home", icon: null },
     { path: "/library", label: "Standards Library", icon: BookOpen },
     { path: "/compare", label: "Compare Topics", icon: GitCompare },
-  
     { path: "/bibliography", label: "Bibliography", icon: FileText },
-  
     { path: "/generator", label: "Process Generator", icon: Settings },
+    { path: "/phase2", label: "Phase 2 Process", icon: Layers }, // <-- New button
   ];
 
   return (
@@ -54,3 +53,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
