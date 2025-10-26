@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LargeGovernmentProjects from "../components/LargeGovernmentProjects";
 
 const phases = [
   {
@@ -487,6 +488,11 @@ const Phase2 = () => {
             Explore Full Standards Library
           </button>
         </Link>
+      </div>
+
+      {/* Large Government Projects Section */}
+      <div style={{ marginTop: "4rem", borderTop: "3px solid #e5e7eb", paddingTop: "3rem" }}>
+        <LargeGovernmentProjects />
       </div>
     </div>
   );

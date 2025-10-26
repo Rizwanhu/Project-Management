@@ -6,11 +6,11 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
           <p>
-            Developed by [Your Name or Group Name] | Prototype for Academic Project
+            Developed by [Rizwan Hussain - Afrazia Umer - Faseeha Noor] | Prototype for Academic Project
           </p>
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com/yourusername/your-repo"
+              href="https://github.com/Rizwanhu/Project-Management"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 transition-colors hover:text-foreground"
@@ -19,7 +19,7 @@ const Footer = () => {
               <span>GitHub Repository</span>
             </a>
             <a
-              href="mailto:contact@example.com"
+              href="mailto:rizwanhu140@gmail.com"
               className="flex items-center gap-2 transition-colors hover:text-foreground"
             >
               <Mail className="h-4 w-4" />
