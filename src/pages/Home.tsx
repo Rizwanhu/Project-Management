@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { BookOpen, GitCompare, BarChart3, ArrowRight, FileText, Lightbulb } from "lucide-react";
+import { BookOpen, GitCompare, BarChart3, ArrowRight, FileText, Lightbulb, Rocket } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import { getTopicsList } from "@/utils/comparison-utils";
 
@@ -73,23 +73,29 @@ const Home = () => {
             </Card>
 
             {/* Button Section */}
-            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-3 mx-auto max-w-5xl">
               <Link to="/library">
                 <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
-                  <BookOpen className="h-5 w-5" />
-                  Go to Standards Library
+                  <BookOpen className="h-4 w-4" />
+                  Standards Library
                 </Button>
               </Link>
               <Link to="/compare">
                 <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
-                  <GitCompare className="h-5 w-5" />
+                  <GitCompare className="h-4 w-4" />
                   Compare Topics
                 </Button>
               </Link>
               <Link to="/phase2">
                 <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
-                  <Lightbulb className="h-5 w-5" />
-                  Phase 2 – Project Types
+                  <Lightbulb className="h-4 w-4" />
+                  Project Types
+                </Button>
+              </Link>
+              <Link to="/phase2/custom-software">
+                <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
+                  <Rocket className="h-4 w-4" />
+                  Custom Software
                 </Button>
               </Link>
               <Button
@@ -97,13 +103,13 @@ const Home = () => {
                 className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white"
                 onClick={handleViewBibliography}
               >
-                <FileText className="h-5 w-5" />
-                Open Bibliography for Topic
+                <FileText className="h-4 w-4" />
+                Bibliography
               </Button>
               <Link to="/generator">
                 <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
-                  <BarChart3 className="h-5 w-5" />
-                  Generate Custom Guide
+                  <BarChart3 className="h-4 w-4" />
+                  Custom Guide
                 </Button>
               </Link>
             </div>
