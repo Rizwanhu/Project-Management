@@ -15,37 +15,46 @@ const LargeGovernmentProjects = () => {
     }));
 
     return (
-      <div style={{ background: "#fff", padding: "1.5rem", borderRadius: "12px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)", marginBottom: "2rem" }}>
-        <h3 style={{ marginBottom: "1rem", fontSize: "1.25rem", fontWeight: "600", color: "#111827" }}>
+      <div style={{ background: "#fff", padding: "clamp(1rem, 3vw, 1.5rem)", borderRadius: "12px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)", marginBottom: "2rem" }}>
+        <h3 style={{ marginBottom: "1rem", fontSize: "clamp(1rem, 3vw, 1.25rem)", fontWeight: "600", color: "#111827" }}>
           Project Timeline Distribution
         </h3>
-        <div style={{ display: "flex", alignItems: "center", height: "60px", gap: "4px" }}>
+        <div style={{ 
+          display: "flex", 
+          alignItems: "center", 
+          height: "clamp(50px, 8vw, 60px)", 
+          gap: "clamp(2px, 1vw, 4px)",
+          overflowX: "auto",
+          paddingBottom: "20px"
+        }}>
           {phasesData.map((phase, index) => (
             <div
               key={phase.fullName}
               style={{
                 flex: phase.duration,
                 background: phase.color,
-                height: "40px",
+                height: "clamp(35px, 6vw, 40px)",
                 borderRadius: "6px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 color: "white",
                 fontWeight: "600",
-                fontSize: "0.875rem",
-                position: "relative"
+                fontSize: "clamp(0.7rem, 2vw, 0.875rem)",
+                position: "relative",
+                minWidth: "60px"
               }}
             >
-              {phase.name}
+              <span style={{ fontSize: "clamp(0.6rem, 1.5vw, 0.7rem)" }}>{phase.name}</span>
               <div style={{
                 position: "absolute",
                 bottom: "-20px",
-                fontSize: "0.75rem",
+                fontSize: "clamp(0.6rem, 1.5vw, 0.75rem)",
                 color: "#6b7280",
-                fontWeight: "500"
+                fontWeight: "500",
+                whiteSpace: "nowrap"
               }}>
-                {phase.duration} months
+                {phase.duration}m
               </div>
             </div>
           ))}
@@ -63,57 +72,114 @@ const LargeGovernmentProjects = () => {
     };
 
     return (
-      <div style={{ background: "#fff", padding: "1.5rem", borderRadius: "12px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)", marginBottom: "2rem" }}>
-        <h3 style={{ marginBottom: "1rem", fontSize: "1.25rem", fontWeight: "600", color: "#111827" }}>
+      <div style={{ background: "#fff", padding: "clamp(1rem, 3vw, 1.5rem)", borderRadius: "12px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)", marginBottom: "2rem" }}>
+        <h3 style={{ marginBottom: "1rem", fontSize: "clamp(1rem, 3vw, 1.25rem)", fontWeight: "600", color: "#111827" }}>
           Risk Assessment Heat Map
         </h3>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: "1rem", alignItems: "center" }}>
-          <div style={{ fontWeight: "600", color: "#374151" }}>Phase</div>
-          <div style={{ fontWeight: "600", color: "#374151", textAlign: "center" }}>Uncertainty</div>
-          <div style={{ fontWeight: "600", color: "#374151", textAlign: "center" }}>Complexity</div>
-          <div style={{ fontWeight: "600", color: "#374151", textAlign: "center" }}>Impact</div>
-          
-          {metrics.riskAssessment.map((risk) => (
-            <React.Fragment key={risk.phase}>
-              <div style={{ fontWeight: "500", color: "#4b5563" }}>{risk.phase}</div>
-              <div style={{ textAlign: "center" }}>
-                <div style={{
-                  background: getColor(risk.uncertainty),
-                  color: "white",
-                  padding: "0.5rem",
-                  borderRadius: "6px",
-                  fontWeight: "600",
-                  fontSize: "0.875rem"
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: "500px" }}>
+            <thead>
+              <tr>
+                <th style={{ 
+                  fontWeight: "600", 
+                  color: "#374151", 
+                  fontSize: "clamp(0.8rem, 2vw, 1rem)", 
+                  textAlign: "left", 
+                  padding: "clamp(0.5rem, 2vw, 0.75rem)",
+                  borderBottom: "2px solid #e5e7eb"
                 }}>
-                  {risk.uncertainty}/10
-                </div>
-              </div>
-              <div style={{ textAlign: "center" }}>
-                <div style={{
-                  background: getColor(risk.complexity),
-                  color: "white",
-                  padding: "0.5rem",
-                  borderRadius: "6px",
-                  fontWeight: "600",
-                  fontSize: "0.875rem"
+                  Phase
+                </th>
+                <th style={{ 
+                  fontWeight: "600", 
+                  color: "#374151", 
+                  fontSize: "clamp(0.8rem, 2vw, 1rem)", 
+                  textAlign: "center", 
+                  padding: "clamp(0.5rem, 2vw, 0.75rem)",
+                  borderBottom: "2px solid #e5e7eb"
                 }}>
-                  {risk.complexity}/10
-                </div>
-              </div>
-              <div style={{ textAlign: "center" }}>
-                <div style={{
-                  background: getColor(risk.impact),
-                  color: "white",
-                  padding: "0.5rem",
-                  borderRadius: "6px",
-                  fontWeight: "600",
-                  fontSize: "0.875rem"
+                  Uncertainty
+                </th>
+                <th style={{ 
+                  fontWeight: "600", 
+                  color: "#374151", 
+                  fontSize: "clamp(0.8rem, 2vw, 1rem)", 
+                  textAlign: "center", 
+                  padding: "clamp(0.5rem, 2vw, 0.75rem)",
+                  borderBottom: "2px solid #e5e7eb"
                 }}>
-                  {risk.impact}/10
-                </div>
-              </div>
-            </React.Fragment>
-          ))}
+                  Complexity
+                </th>
+                <th style={{ 
+                  fontWeight: "600", 
+                  color: "#374151", 
+                  fontSize: "clamp(0.8rem, 2vw, 1rem)", 
+                  textAlign: "center", 
+                  padding: "clamp(0.5rem, 2vw, 0.75rem)",
+                  borderBottom: "2px solid #e5e7eb"
+                }}>
+                  Impact
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {metrics.riskAssessment.map((risk, index) => (
+                <tr key={risk.phase} style={{ backgroundColor: index % 2 === 0 ? "#f9fafb" : "transparent" }}>
+                  <td style={{ 
+                    fontWeight: "500", 
+                    color: "#4b5563", 
+                    fontSize: "clamp(0.8rem, 2vw, 1rem)", 
+                    padding: "clamp(0.5rem, 2vw, 0.75rem)",
+                    borderBottom: "1px solid #e5e7eb"
+                  }}>
+                    {risk.phase}
+                  </td>
+                  <td style={{ textAlign: "center", padding: "clamp(0.5rem, 2vw, 0.75rem)", borderBottom: "1px solid #e5e7eb" }}>
+                    <div style={{
+                      background: getColor(risk.uncertainty),
+                      color: "white",
+                      padding: "clamp(0.3rem, 1vw, 0.5rem)",
+                      borderRadius: "6px",
+                      fontWeight: "600",
+                      fontSize: "clamp(0.7rem, 2vw, 0.875rem)",
+                      display: "inline-block",
+                      minWidth: "60px"
+                    }}>
+                      {risk.uncertainty}/10
+                    </div>
+                  </td>
+                  <td style={{ textAlign: "center", padding: "clamp(0.5rem, 2vw, 0.75rem)", borderBottom: "1px solid #e5e7eb" }}>
+                    <div style={{
+                      background: getColor(risk.complexity),
+                      color: "white",
+                      padding: "clamp(0.3rem, 1vw, 0.5rem)",
+                      borderRadius: "6px",
+                      fontWeight: "600",
+                      fontSize: "clamp(0.7rem, 2vw, 0.875rem)",
+                      display: "inline-block",
+                      minWidth: "60px"
+                    }}>
+                      {risk.complexity}/10
+                    </div>
+                  </td>
+                  <td style={{ textAlign: "center", padding: "clamp(0.5rem, 2vw, 0.75rem)", borderBottom: "1px solid #e5e7eb" }}>
+                    <div style={{
+                      background: getColor(risk.impact),
+                      color: "white",
+                      padding: "clamp(0.3rem, 1vw, 0.5rem)",
+                      borderRadius: "6px",
+                      fontWeight: "600",
+                      fontSize: "clamp(0.7rem, 2vw, 0.875rem)",
+                      display: "inline-block",
+                      minWidth: "60px"
+                    }}>
+                      {risk.impact}/10
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     );
@@ -121,43 +187,112 @@ const LargeGovernmentProjects = () => {
 
   const ResourceAllocationChart = () => {
     return (
-      <div style={{ background: "#fff", padding: "1.5rem", borderRadius: "12px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)", marginBottom: "2rem" }}>
-        <h3 style={{ marginBottom: "1rem", fontSize: "1.25rem", fontWeight: "600", color: "#111827" }}>
+      <div style={{ background: "#fff", padding: "clamp(1rem, 3vw, 1.5rem)", borderRadius: "12px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)", marginBottom: "2rem" }}>
+        <h3 style={{ marginBottom: "1rem", fontSize: "clamp(1rem, 3vw, 1.25rem)", fontWeight: "600", color: "#111827" }}>
           Resource Allocation by Phase (%)
         </h3>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr", gap: "0.5rem", alignItems: "center" }}>
-          <div style={{ fontWeight: "600", color: "#374151" }}>Role</div>
-          <div style={{ fontWeight: "600", color: "#374151", textAlign: "center", fontSize: "0.875rem" }}>Initiation</div>
-          <div style={{ fontWeight: "600", color: "#374151", textAlign: "center", fontSize: "0.875rem" }}>Planning</div>
-          <div style={{ fontWeight: "600", color: "#374151", textAlign: "center", fontSize: "0.875rem" }}>Implementation</div>
-          <div style={{ fontWeight: "600", color: "#374151", textAlign: "center", fontSize: "0.875rem" }}>Testing</div>
-          <div style={{ fontWeight: "600", color: "#374151", textAlign: "center", fontSize: "0.875rem" }}>Handover</div>
-          
-          {metrics.resourceAllocation.map((resource) => (
-            <React.Fragment key={resource.role}>
-              <div style={{ fontWeight: "500", color: "#4b5563", fontSize: "0.875rem" }}>{resource.role}</div>
-              {[resource.initiation, resource.planning, resource.implementation, resource.testing, resource.handover].map((value, index) => (
-                <div key={index} style={{ textAlign: "center" }}>
-                  <div style={{
-                    background: "#3b82f6",
-                    height: "20px",
-                    width: `${value}%`,
-                    margin: "0 auto",
-                    borderRadius: "4px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "white",
-                    fontSize: "0.75rem",
-                    fontWeight: "600",
-                    minWidth: "30px"
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: "600px" }}>
+            <thead>
+              <tr>
+                <th style={{ 
+                  fontWeight: "600", 
+                  color: "#374151", 
+                  fontSize: "clamp(0.8rem, 2vw, 1rem)", 
+                  textAlign: "left", 
+                  padding: "clamp(0.5rem, 2vw, 0.75rem)",
+                  borderBottom: "2px solid #e5e7eb"
+                }}>
+                  Role
+                </th>
+                <th style={{ 
+                  fontWeight: "600", 
+                  color: "#374151", 
+                  fontSize: "clamp(0.7rem, 1.5vw, 0.875rem)", 
+                  textAlign: "center", 
+                  padding: "clamp(0.5rem, 2vw, 0.75rem)",
+                  borderBottom: "2px solid #e5e7eb"
+                }}>
+                  Initiation
+                </th>
+                <th style={{ 
+                  fontWeight: "600", 
+                  color: "#374151", 
+                  fontSize: "clamp(0.7rem, 1.5vw, 0.875rem)", 
+                  textAlign: "center", 
+                  padding: "clamp(0.5rem, 2vw, 0.75rem)",
+                  borderBottom: "2px solid #e5e7eb"
+                }}>
+                  Planning
+                </th>
+                <th style={{ 
+                  fontWeight: "600", 
+                  color: "#374151", 
+                  fontSize: "clamp(0.7rem, 1.5vw, 0.875rem)", 
+                  textAlign: "center", 
+                  padding: "clamp(0.5rem, 2vw, 0.75rem)",
+                  borderBottom: "2px solid #e5e7eb"
+                }}>
+                  Implementation
+                </th>
+                <th style={{ 
+                  fontWeight: "600", 
+                  color: "#374151", 
+                  fontSize: "clamp(0.7rem, 1.5vw, 0.875rem)", 
+                  textAlign: "center", 
+                  padding: "clamp(0.5rem, 2vw, 0.75rem)",
+                  borderBottom: "2px solid #e5e7eb"
+                }}>
+                  Testing
+                </th>
+                <th style={{ 
+                  fontWeight: "600", 
+                  color: "#374151", 
+                  fontSize: "clamp(0.7rem, 1.5vw, 0.875rem)", 
+                  textAlign: "center", 
+                  padding: "clamp(0.5rem, 2vw, 0.75rem)",
+                  borderBottom: "2px solid #e5e7eb"
+                }}>
+                  Handover
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {metrics.resourceAllocation.map((resource, index) => (
+                <tr key={resource.role} style={{ backgroundColor: index % 2 === 0 ? "#f9fafb" : "transparent" }}>
+                  <td style={{ 
+                    fontWeight: "500", 
+                    color: "#4b5563", 
+                    fontSize: "clamp(0.7rem, 1.5vw, 0.875rem)", 
+                    padding: "clamp(0.5rem, 2vw, 0.75rem)",
+                    borderBottom: "1px solid #e5e7eb"
                   }}>
-                    {value}%
-                  </div>
-                </div>
+                    {resource.role}
+                  </td>
+                  {[resource.initiation, resource.planning, resource.implementation, resource.testing, resource.handover].map((value, colIndex) => (
+                    <td key={colIndex} style={{ textAlign: "center", padding: "clamp(0.5rem, 2vw, 0.75rem)", borderBottom: "1px solid #e5e7eb" }}>
+                      <div style={{
+                        background: "#3b82f6",
+                        height: "clamp(15px, 3vw, 20px)",
+                        width: `${value}%`,
+                        margin: "0 auto",
+                        borderRadius: "4px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "white",
+                        fontSize: "clamp(0.6rem, 1.5vw, 0.75rem)",
+                        fontWeight: "600",
+                        minWidth: "clamp(25px, 5vw, 30px)"
+                      }}>
+                        {value}%
+                      </div>
+                    </td>
+                  ))}
+                </tr>
               ))}
-            </React.Fragment>
-          ))}
+            </tbody>
+          </table>
         </div>
       </div>
     );
@@ -165,11 +300,11 @@ const LargeGovernmentProjects = () => {
 
   const KpiProgressChart = () => {
     return (
-      <div style={{ background: "#fff", padding: "1.5rem", borderRadius: "12px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
-        <h3 style={{ marginBottom: "1rem", fontSize: "1.25rem", fontWeight: "600", color: "#111827" }}>
+      <div style={{ background: "#fff", padding: "clamp(1rem, 3vw, 1.5rem)", borderRadius: "12px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
+        <h3 style={{ marginBottom: "1rem", fontSize: "clamp(1rem, 3vw, 1.25rem)", fontWeight: "600", color: "#111827" }}>
           KPI Progress Tracking
         </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "clamp(0.8rem, 2vw, 1rem)" }}>
           {metrics.kpiProgress.map((kpi) => {
             // Parse current and target values for progress calculation
             const currentValue = kpi.current === "—" ? 0 : parseFloat(kpi.current.replace(/[<>%]/g, ''));
@@ -190,11 +325,28 @@ const LargeGovernmentProjects = () => {
             const color = getColor(kpi.current, kpi.target);
 
             return (
-              <div key={kpi.metric} style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-                <div style={{ width: "200px", fontWeight: "500", color: "#374151", fontSize: "0.875rem" }}>
+              <div key={kpi.metric} style={{ 
+                display: "flex", 
+                alignItems: "center", 
+                gap: "clamp(0.5rem, 2vw, 1rem)",
+                flexWrap: "wrap"
+              }}>
+                <div style={{ 
+                  minWidth: "clamp(150px, 30vw, 200px)", 
+                  fontWeight: "500", 
+                  color: "#374151", 
+                  fontSize: "clamp(0.8rem, 2vw, 0.875rem)" 
+                }}>
                   {kpi.metric}
                 </div>
-                <div style={{ flex: 1, background: "#e5e7eb", borderRadius: "10px", height: "20px", overflow: "hidden" }}>
+                <div style={{ 
+                  flex: 1, 
+                  background: "#e5e7eb", 
+                  borderRadius: "10px", 
+                  height: "clamp(15px, 3vw, 20px)", 
+                  overflow: "hidden",
+                  minWidth: "100px"
+                }}>
                   <div style={{
                     background: color,
                     width: kpi.current === "—" ? "0%" : `${Math.min(percentage, 100)}%`,
@@ -203,7 +355,13 @@ const LargeGovernmentProjects = () => {
                     transition: "width 0.3s ease"
                   }} />
                 </div>
-                <div style={{ width: "80px", textAlign: "right", fontSize: "0.875rem", fontWeight: "600", color: "#374151" }}>
+                <div style={{ 
+                  minWidth: "clamp(60px, 15vw, 80px)", 
+                  textAlign: "right", 
+                  fontSize: "clamp(0.7rem, 1.5vw, 0.875rem)", 
+                  fontWeight: "600", 
+                  color: "#374151" 
+                }}>
                   {kpi.current}/{kpi.target}
                 </div>
               </div>
@@ -215,17 +373,18 @@ const LargeGovernmentProjects = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#f9fafb", minHeight: "100vh", padding: "3rem" }}>
-      <h1 style={{ textAlign: "center", fontSize: "3rem", fontWeight: "800", color: "#111827", marginBottom: "1rem" }}>
-        Large Government Project Delivery Process
-      </h1>
-      <p style={{ textAlign: "center", color: "#6b7280", marginBottom: "3rem", fontSize: "1.1rem" }}>
-        {context}
-      </p>
+    <div style={{ fontFamily: "'Inter', sans-serif", background: "#f9fafb", minHeight: "100vh", padding: "1rem" }}>
+      <div className="container mx-auto max-w-6xl px-4">
+        <h1 style={{ textAlign: "center", fontSize: "clamp(1.5rem, 4vw, 3rem)", fontWeight: "800", color: "#111827", marginBottom: "1rem" }}>
+          Large Government Project Delivery Process
+        </h1>
+        <p style={{ textAlign: "center", color: "#6b7280", marginBottom: "3rem", fontSize: "clamp(0.9rem, 2vw, 1.1rem)", lineHeight: "1.6" }}>
+          {context}
+        </p>
 
       {/* Visual Charts Section */}
       <div style={{ marginBottom: "3rem" }}>
-        <h2 style={{ fontSize: "1.8rem", fontWeight: "700", color: "#111827", marginBottom: "1.5rem", textAlign: "center" }}>
+        <h2 style={{ fontSize: "clamp(1.2rem, 4vw, 1.8rem)", fontWeight: "700", color: "#111827", marginBottom: "1.5rem", textAlign: "center" }}>
           Project Overview & Metrics
         </h2>
         <TimelineChart />
@@ -235,29 +394,29 @@ const LargeGovernmentProjects = () => {
       </div>
 
       {/* Process Phases */}
-      <h2 style={{ fontSize: "1.8rem", fontWeight: "700", color: "#111827", marginBottom: "1.5rem", textAlign: "center" }}>
+      <h2 style={{ fontSize: "clamp(1.2rem, 4vw, 1.8rem)", fontWeight: "700", color: "#111827", marginBottom: "1.5rem", textAlign: "center" }}>
         Project Phases
       </h2>
-      <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "clamp(1.5rem, 4vw, 2.5rem)" }}>
         {phases.map((phase, idx) => (
           <div
             key={phase.id}
             style={{
               background: "#fff",
               borderRadius: "14px",
-              padding: "2rem",
+              padding: "clamp(1rem, 4vw, 2rem)",
               boxShadow: "0 12px 24px rgba(0,0,0,0.08)",
               borderLeft: `10px solid ${["#3b82f6", "#10b981", "#f59e0b", "#8b5cf6", "#ef4444"][idx]}`,
               transition: "transform 0.2s",
             }}
           >
-            <h2 style={{ fontSize: "2rem", fontWeight: "700", color: "#111827", marginBottom: "0.5rem" }}>
+            <h2 style={{ fontSize: "clamp(1.2rem, 4vw, 2rem)", fontWeight: "700", color: "#111827", marginBottom: "0.5rem" }}>
               {phase.id}. {phase.name}
             </h2>
-            <p style={{ fontSize: "1rem", color: "#374151", marginBottom: "1rem" }}>{phase.description}</p>
+            <p style={{ fontSize: "clamp(0.9rem, 2vw, 1rem)", color: "#374151", marginBottom: "1rem", lineHeight: "1.6" }}>{phase.description}</p>
 
             <div style={{ marginBottom: "1rem" }}>
-              <p style={{ fontWeight: "600", color: "#111827", marginBottom: "0.5rem" }}>Core Roles:</p>
+              <p style={{ fontWeight: "600", color: "#111827", marginBottom: "0.5rem", fontSize: "clamp(0.9rem, 2vw, 1rem)" }}>Core Roles:</p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1rem" }}>
                 {phase.roles.map((role, i) => (
                   <span
@@ -265,9 +424,9 @@ const LargeGovernmentProjects = () => {
                     style={{
                       background: "#e0f2fe",
                       color: "#0369a1",
-                      padding: "0.35rem 0.7rem",
+                      padding: "clamp(0.25rem, 1vw, 0.35rem) clamp(0.5rem, 2vw, 0.7rem)",
                       borderRadius: "6px",
-                      fontSize: "0.85rem",
+                      fontSize: "clamp(0.75rem, 2vw, 0.85rem)",
                       fontWeight: "500",
                       cursor: "default",
                     }}
@@ -279,37 +438,37 @@ const LargeGovernmentProjects = () => {
             </div>
 
             <div style={{ marginBottom: "1rem" }}>
-              <p style={{ fontWeight: "600", color: "#111827", marginBottom: "0.5rem" }}>Activities:</p>
+              <p style={{ fontWeight: "600", color: "#111827", marginBottom: "0.5rem", fontSize: "clamp(0.9rem, 2vw, 1rem)" }}>Activities:</p>
               <ul style={{ paddingLeft: "1.5rem", color: "#4b5563", listStyleType: "disc" }}>
                 {phase.activities.map((act, i) => (
-                  <li key={i} style={{ marginBottom: "0.4rem" }}>
+                  <li key={i} style={{ marginBottom: "0.4rem", fontSize: "clamp(0.85rem, 2vw, 1rem)", lineHeight: "1.5" }}>
                     {act}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <p style={{ color: "#374151", marginBottom: "0.5rem" }}>
+            <p style={{ color: "#374151", marginBottom: "0.5rem", fontSize: "clamp(0.85rem, 2vw, 1rem)" }}>
               <strong>Deliverables:</strong> {phase.deliverables.join(", ")}
             </p>
-            <p style={{ color: "#374151", marginBottom: "0.5rem" }}>
+            <p style={{ color: "#374151", marginBottom: "0.5rem", fontSize: "clamp(0.85rem, 2vw, 1rem)" }}>
               <strong>Timeline:</strong> {phase.timeline}
             </p>
-            <p style={{ color: "#374151", marginBottom: "0.5rem" }}>
+            <p style={{ color: "#374151", marginBottom: "0.5rem", fontSize: "clamp(0.85rem, 2vw, 1rem)" }}>
               <strong>Risks:</strong> {phase.risks.join(", ")}
             </p>
-            <p style={{ color: "#374151", marginBottom: "0.5rem" }}>
+            <p style={{ color: "#374151", marginBottom: "0.5rem", fontSize: "clamp(0.85rem, 2vw, 1rem)" }}>
               <strong>KPIs:</strong> {phase.kpis.join(", ")}
             </p>
-            <p style={{ color: "#374151", marginBottom: "0.5rem" }}>
+            <p style={{ color: "#374151", marginBottom: "0.5rem", fontSize: "clamp(0.85rem, 2vw, 1rem)" }}>
               <strong>Decision Gate:</strong> {phase.decisionGate}
             </p>
 
             <div style={{ marginBottom: "1rem" }}>
-              <p style={{ fontWeight: "600", color: "#111827", marginBottom: "0.5rem" }}>Standards References:</p>
+              <p style={{ fontWeight: "600", color: "#111827", marginBottom: "0.5rem", fontSize: "clamp(0.9rem, 2vw, 1rem)" }}>Standards References:</p>
               <ul style={{ paddingLeft: "1.5rem", color: "#4b5563" }}>
                 {phase.standardsRefs.map((ref, i) => (
-                  <li key={i}>
+                  <li key={i} style={{ marginBottom: "0.3rem", fontSize: "clamp(0.85rem, 2vw, 1rem)" }}>
                     <Link 
                       to={`/library/${ref.standard}/${ref.section}`}
                       style={{ 
@@ -325,19 +484,19 @@ const LargeGovernmentProjects = () => {
               </ul>
             </div>
 
-            <p style={{ color: "#374151" }}>
+            <p style={{ color: "#374151", fontSize: "clamp(0.85rem, 2vw, 1rem)", lineHeight: "1.5" }}>
               <strong>Tailoring Justification:</strong> {phase.tailoringJustification}
             </p>
           </div>
         ))}
       </div>
 
-      <h3 style={{ marginTop: "3rem", fontSize: "1.6rem", fontWeight: "700", color: "#111827" }}>
+      <h3 style={{ marginTop: "3rem", fontSize: "clamp(1.2rem, 4vw, 1.6rem)", fontWeight: "700", color: "#111827" }}>
         Key Insights & Governance
       </h3>
       <ul style={{ color: "#4b5563", paddingLeft: "1.5rem", marginTop: "0.5rem", lineHeight: "1.8" }}>
         {keyInsights.map((insight, index) => (
-          <li key={index}>{insight}</li>
+          <li key={index} style={{ marginBottom: "0.5rem", fontSize: "clamp(0.85rem, 2vw, 1rem)" }}>{insight}</li>
         ))}
       </ul>
 
@@ -346,10 +505,10 @@ const LargeGovernmentProjects = () => {
           <button style={{
             background: "#3b82f6",
             color: "white",
-            padding: "0.75rem 1.5rem",
+            padding: "clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 4vw, 1.5rem)",
             borderRadius: "8px",
             border: "none",
-            fontSize: "1rem",
+            fontSize: "clamp(0.9rem, 2vw, 1rem)",
             fontWeight: "600",
             cursor: "pointer",
             textDecoration: "none"
@@ -357,6 +516,7 @@ const LargeGovernmentProjects = () => {
             Explore Full Standards Library
           </button>
         </Link>
+      </div>
       </div>
     </div>
   );

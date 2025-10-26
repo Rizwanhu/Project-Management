@@ -129,16 +129,16 @@ const CustomSoftwareProjects = () => {
       <div className="container mx-auto max-w-6xl">
         {/* Title Section */}
         <div className="mb-8">
-          <h1 style={{ fontSize: "2.5rem", fontWeight: "800", color: "#111827", marginBottom: "1rem" }}>
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
             Scenario 1: Custom Software Development Project
           </h1>
           <div className="flex flex-wrap gap-2 mb-4">
-            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100">Scenario 1</Badge>
-            <Badge className="bg-green-100 text-green-800 hover:bg-green-100">≤ 7 Team Members</Badge>
-            <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100">≤ 6 Months Duration</Badge>
-            <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-100">Hybrid Agile–PRINCE2</Badge>
+            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 text-xs md:text-sm">Scenario 1</Badge>
+            <Badge className="bg-green-100 text-green-800 hover:bg-green-100 text-xs md:text-sm">≤ 7 Team Members</Badge>
+            <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100 text-xs md:text-sm">≤ 6 Months Duration</Badge>
+            <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-100 text-xs md:text-sm">Hybrid Agile–PRINCE2</Badge>
           </div>
-          <p style={{ color: "#6b7280", fontSize: "1.1rem", lineHeight: "1.6" }}>
+          <p className="text-gray-600 text-sm md:text-lg leading-relaxed">
             Short duration (≤6 months), small team (≤7), well-defined requirements<br />
             Hybrid Agile–PRINCE2, tailored using PMBOK 7 value delivery & ISO 21502 governance
           </p>
@@ -146,73 +146,59 @@ const CustomSoftwareProjects = () => {
 
         {/* Phase Cards */}
         <div className="mb-12">
-          <h2 style={{ fontSize: "1.8rem", fontWeight: "700", color: "#111827", marginBottom: "1.5rem" }}>
+          <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-6">
             Project Phases
           </h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+          <div className="space-y-6 md:space-y-8">
             {phases.map((phase) => {
               const Icon = phase.icon;
               return (
                 <Card
                   key={phase.id}
+                  className="border-l-6 transition-all duration-200 hover:shadow-lg"
                   style={{
-                    borderLeft: `6px solid ${phase.color}`,
-                    transition: "transform 0.2s, box-shadow 0.2s",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-4px)";
-                    e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.12)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "0 1px 3px 0 rgb(0 0 0 / 0.1)";
+                    borderLeftColor: phase.color,
                   }}
                 >
-                  <CardHeader>
+                  <CardHeader className="pb-4">
                     <div className="flex items-center gap-3 mb-2">
                       <div
+                        className="rounded-lg p-2 flex items-center justify-center"
                         style={{
                           background: `linear-gradient(135deg, ${phase.color}dd, ${phase.color})`,
-                          borderRadius: "10px",
-                          padding: "0.6rem",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
                         }}
                       >
-                        <Icon className="h-5 w-5 text-white" />
+                        <Icon className="h-4 w-4 md:h-5 md:w-5 text-white" />
                       </div>
-                      <CardTitle style={{ fontSize: "1.5rem", margin: 0 }}>
+                      <CardTitle className="text-lg md:text-2xl m-0">
                         Phase {phase.id} — {phase.name}
                       </CardTitle>
                     </div>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="space-y-4">
                     {/* Goal */}
                     <div
+                      className="rounded-lg p-4"
                       style={{
                         background: `${phase.color}15`,
-                        borderRadius: "8px",
-                        padding: "1rem",
-                        marginBottom: "1.25rem",
                       }}
                     >
-                      <p style={{ fontWeight: "600", color: "#111827", marginBottom: "0.25rem" }}>Goal:</p>
-                      <p style={{ color: "#374151", margin: 0 }}>{phase.goal}</p>
+                      <p className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Goal:</p>
+                      <p className="text-gray-700 text-sm md:text-base m-0">{phase.goal}</p>
                     </div>
 
                     {/* Roles */}
-                    <div style={{ marginBottom: "1.25rem" }}>
-                      <p style={{ fontWeight: "600", color: "#111827", marginBottom: "0.5rem" }}>Roles:</p>
-                      <p className="text-muted-foreground" style={{ margin: 0 }}>{phase.roles}</p>
+                    <div>
+                      <p className="font-semibold text-gray-900 mb-2 text-sm md:text-base">Roles:</p>
+                      <p className="text-muted-foreground text-sm md:text-base m-0">{phase.roles}</p>
                     </div>
 
                     {/* Activities */}
-                    <div style={{ marginBottom: "1.25rem" }}>
-                      <p style={{ fontWeight: "600", color: "#111827", marginBottom: "0.75rem" }}>Activities:</p>
-                      <ul style={{ paddingLeft: "1.5rem", margin: 0 }} className="text-muted-foreground">
+                    <div>
+                      <p className="font-semibold text-gray-900 mb-3 text-sm md:text-base">Activities:</p>
+                      <ul className="pl-6 m-0 text-muted-foreground space-y-1">
                         {phase.activities.map((act, i) => (
-                          <li key={i} style={{ marginBottom: "0.4rem" }}>
+                          <li key={i} className="text-sm md:text-base">
                             {act}
                           </li>
                         ))}
@@ -220,20 +206,13 @@ const CustomSoftwareProjects = () => {
                     </div>
 
                     {/* Deliverables */}
-                    <div style={{ marginBottom: "1.25rem" }}>
-                      <p style={{ fontWeight: "600", color: "#111827", marginBottom: "0.75rem" }}>Deliverables:</p>
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                    <div>
+                      <p className="font-semibold text-gray-900 mb-3 text-sm md:text-base">Deliverables:</p>
+                      <div className="flex flex-wrap gap-2">
                         {phase.deliverables.map((deliverable, i) => (
                           <span
                             key={i}
-                            style={{
-                              background: "#e0f2fe",
-                              color: "#0369a1",
-                              padding: "0.35rem 0.7rem",
-                              borderRadius: "6px",
-                              fontSize: "0.85rem",
-                              fontWeight: "500",
-                            }}
+                            className="bg-blue-100 text-blue-800 px-3 py-1 rounded-md text-xs md:text-sm font-medium"
                           >
                             {deliverable}
                           </span>
@@ -242,35 +221,23 @@ const CustomSoftwareProjects = () => {
                     </div>
 
                     {/* Decision Gate */}
-                    <div
-                      style={{
-                        background: "#fef3c7",
-                        border: "1px solid #fbbf24",
-                        borderRadius: "8px",
-                        padding: "0.75rem 1rem",
-                        marginBottom: "1.25rem",
-                      }}
-                    >
-                      <p style={{ fontWeight: "600", color: "#92400e", margin: 0 }}>
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 md:p-4">
+                      <p className="font-semibold text-yellow-800 m-0 text-sm md:text-base">
                         {phase.decisionGate}
                       </p>
                     </div>
 
                     {/* Standards Mapping */}
-                    <div style={{ marginBottom: "1rem" }}>
-                      <p style={{ fontWeight: "600", color: "#111827", marginBottom: "0.75rem" }}>
+                    <div>
+                      <p className="font-semibold text-gray-900 mb-3 text-sm md:text-base">
                         Standards Mapping (Deep links):
                       </p>
-                      <ul style={{ paddingLeft: "1.5rem", margin: 0, listStyleType: "none" }} className="text-muted-foreground">
+                      <ul className="pl-6 m-0 list-none text-muted-foreground space-y-2">
                         {phase.standardsRefs.map((ref, i) => (
-                          <li key={i} style={{ marginBottom: "0.5rem" }}>
+                          <li key={i}>
                             <Link
                               to={`/library/${ref.standard}/${ref.section}`}
-                              style={{
-                                color: "#3b82f6",
-                                textDecoration: "underline",
-                                fontWeight: "500",
-                              }}
+                              className="text-blue-600 underline font-medium hover:text-blue-700 text-sm md:text-base"
                             >
                               → {ref.name}
                             </Link>
@@ -283,15 +250,7 @@ const CustomSoftwareProjects = () => {
                     <div>
                       <Link
                         to={`/bibliography?topic=${phase.bibliographyTopic}&autoOpen=1`}
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "0.5rem",
-                          color: "#3b82f6",
-                          textDecoration: "none",
-                          fontWeight: "600",
-                          fontSize: "0.95rem",
-                        }}
+                        className="inline-flex items-center gap-2 text-blue-600 no-underline font-semibold text-sm md:text-base hover:text-blue-700"
                       >
                         View Bibliography for this Phase
                       </Link>
@@ -323,56 +282,35 @@ const CustomSoftwareProjects = () => {
         {/* RACI Table */}
         <Card className="mb-12">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Users className="h-5 w-5 text-green-600" />
+            <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
+              <Users className="h-4 w-4 md:h-5 md:w-5 text-green-600" />
               Roles & Responsibilities (RACI Table)
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div style={{ overflowX: "auto" }}>
-              <div style={{ 
-                display: "grid", 
-                gridTemplateColumns: "150px repeat(5, 1fr)", 
-                gap: "0.5rem", 
-                minWidth: "600px"
-              }}>
+            <div className="overflow-x-auto">
+              <div className="grid grid-cols-6 gap-2 min-w-[600px]">
                 {/* Header Row */}
-                <div style={{ fontWeight: "600", color: "#374151", padding: "0.5rem" }}>Role</div>
-                <div style={{ fontWeight: "600", color: "#374151", textAlign: "center", padding: "0.5rem" }}>Phase 1</div>
-                <div style={{ fontWeight: "600", color: "#374151", textAlign: "center", padding: "0.5rem" }}>Phase 2</div>
-                <div style={{ fontWeight: "600", color: "#374151", textAlign: "center", padding: "0.5rem" }}>Phase 3</div>
-                <div style={{ fontWeight: "600", color: "#374151", textAlign: "center", padding: "0.5rem" }}>Phase 4</div>
-                <div style={{ fontWeight: "600", color: "#374151", textAlign: "center", padding: "0.5rem" }}>Phase 5</div>
+                <div className="font-semibold text-gray-700 p-2 text-sm md:text-base">Role</div>
+                <div className="font-semibold text-gray-700 text-center p-2 text-xs md:text-sm">Phase 1</div>
+                <div className="font-semibold text-gray-700 text-center p-2 text-xs md:text-sm">Phase 2</div>
+                <div className="font-semibold text-gray-700 text-center p-2 text-xs md:text-sm">Phase 3</div>
+                <div className="font-semibold text-gray-700 text-center p-2 text-xs md:text-sm">Phase 4</div>
+                <div className="font-semibold text-gray-700 text-center p-2 text-xs md:text-sm">Phase 5</div>
 
                 {/* Data Rows */}
                 {raciData.map((row, idx) => (
                   <React.Fragment key={row.role}>
-                    <div style={{ 
-                      fontWeight: "500", 
-                      color: "#4b5563", 
-                      padding: "0.5rem",
-                      background: idx % 2 === 0 ? "#f9fafb" : "transparent"
-                    }}>
+                    <div className={`font-medium text-gray-600 p-2 text-sm md:text-base ${idx % 2 === 0 ? 'bg-gray-50' : ''}`}>
                       {row.role}
-                      {row.key && <div style={{ fontSize: "0.75rem", color: "#9ca3af" }}>({row.key})</div>}
+                      {row.key && <div className="text-xs text-gray-500">({row.key})</div>}
                     </div>
                     {[row.phase1, row.phase2, row.phase3, row.phase4, row.phase5].map((value, colIdx) => (
                       <div
                         key={colIdx}
-                        style={{
-                          textAlign: "center",
-                          padding: "0.5rem",
-                          background: idx % 2 === 0 ? "#f9fafb" : "transparent"
-                        }}
+                        className={`text-center p-2 ${idx % 2 === 0 ? 'bg-gray-50' : ''}`}
                       >
-                        <span style={{
-                          background: "#dbeafe",
-                          color: "#1e40af",
-                          padding: "0.25rem 0.5rem",
-                          borderRadius: "4px",
-                          fontSize: "0.85rem",
-                          fontWeight: "600"
-                        }}>
+                        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs md:text-sm font-semibold">
                           {value}
                         </span>
                       </div>
@@ -381,8 +319,8 @@ const CustomSoftwareProjects = () => {
                 ))}
               </div>
             </div>
-            <div style={{ marginTop: "1rem", padding: "0.75rem", background: "#f3f4f6", borderRadius: "6px" }}>
-              <p style={{ fontSize: "0.875rem", color: "#6b7280", margin: 0 }}>
+            <div className="mt-4 p-3 bg-gray-100 rounded-md">
+              <p className="text-sm text-gray-600 m-0">
                 <strong>Legend:</strong> A = Accountable, R = Responsible, C = Consulted, I = Informed
               </p>
             </div>
@@ -392,13 +330,13 @@ const CustomSoftwareProjects = () => {
         {/* Risks & Quality Controls */}
         <Card className="mb-12">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-red-600" />
+            <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
+              <Shield className="h-4 w-4 md:h-5 md:w-5 text-red-600" />
               Risks & Quality Controls
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className="text-muted-foreground" style={{ paddingLeft: "1.5rem", lineHeight: "1.8" }}>
+            <ul className="text-muted-foreground pl-6 space-y-2 text-sm md:text-base">
               <li><strong>Scope change risk:</strong> Managed through change control board and backlog prioritization</li>
               <li><strong>CI/CD pipeline reliability:</strong> Automated testing and deployment checks ensure stability</li>
               <li><strong>Performance issues late in cycle:</strong> Early load testing and performance benchmarks</li>
@@ -408,11 +346,11 @@ const CustomSoftwareProjects = () => {
         </Card>
 
         {/* Key Insights */}
-        <div style={{ marginBottom: "3rem" }}>
-          <h3 style={{ fontSize: "1.6rem", fontWeight: "700", color: "#111827", marginBottom: "1rem" }}>
+        <div className="mb-12">
+          <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4">
             Key Insights
           </h3>
-          <ul style={{ color: "#4b5563", paddingLeft: "1.5rem", lineHeight: "1.8" }}>
+          <ul className="text-gray-600 pl-6 space-y-2 text-sm md:text-base">
             <li>Hybrid approach balances agility with governance for small, time-boxed projects</li>
             <li>Minimal documentation maintains speed without sacrificing quality</li>
             <li>Clear RACI matrix prevents role confusion in small teams</li>
@@ -422,20 +360,9 @@ const CustomSoftwareProjects = () => {
         </div>
 
         {/* CTA */}
-        <div style={{ textAlign: "center" }}>
+        <div className="text-center">
           <Link to="/library">
-            <button
-              style={{
-                background: "#3b82f6",
-                color: "white",
-                padding: "0.75rem 1.5rem",
-                borderRadius: "8px",
-                border: "none",
-                fontSize: "1rem",
-                fontWeight: "600",
-                cursor: "pointer",
-              }}
-            >
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg border-none text-sm md:text-base font-semibold cursor-pointer transition-colors">
               Explore Full Standards Library
             </button>
           </Link>
