@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { BookOpen, GitCompare, BarChart3, Settings, FileText, Layers } from "lucide-react";
+import { BookOpen, GitCompare, BarChart3, Settings, FileText, Layers, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
@@ -13,7 +13,8 @@ const Navigation = () => {
     { path: "/compare", label: "Compare Topics", icon: GitCompare },
     { path: "/bibliography", label: "Bibliography", icon: FileText },
     { path: "/generator", label: "Process Generator", icon: Settings },
-    { path: "/phase2", label: "Phase 2 Process", icon: Layers }, // <-- New button
+    { path: "/phase2", label: "Phase 2 Process", icon: Layers },
+    { path: "/phase2/custom-software", label: "Custom Software Project", icon: Rocket },
   ];
 
   return (
@@ -29,7 +30,7 @@ const Navigation = () => {
             </span>
           </Link>
           
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -39,7 +40,7 @@ const Navigation = () => {
                     size="sm"
                     className="gap-2"
                   >
-                    {Icon && <Icon className="h-4 w-4" />}
+                    {Icon && <Icon className="h-1 w-1" />}
                     <span className="hidden sm:inline">{item.label}</span>
                   </Button>
                 </Link>

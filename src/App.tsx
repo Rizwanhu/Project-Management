@@ -11,7 +11,8 @@ import Compare from "./pages/Compare";
 import Generator from "./pages/Generator";
 import NotFound from "./pages/NotFound";
 import Bibliography from "./pages/Bibliography";
-import Phase2 from "@/pages/Phase2"; // ✅ Import placed correctly
+import Phase2 from "@/pages/Phase2";
+import ScenarioCustomSoftware from "@/pages/ScenarioCustomSoftware";
 
 const queryClient = new QueryClient();
 
@@ -30,7 +31,8 @@ const App = () => (
               <Route path="/compare" element={<Compare />} />
               <Route path="/bibliography" element={<Bibliography />} />
               <Route path="/generator" element={<Generator />} />
-              <Route path="/phase2" element={<Phase2 />} /> {/* ✅ Added here properly */}
+              <Route path="/phase2" element={<Phase2 />} />
+              <Route path="/phase2/custom-software" element={<ScenarioCustomSoftware />} />
             </Route>
 
             {/* ✅ Keep NotFound at bottom as catch-all */}
