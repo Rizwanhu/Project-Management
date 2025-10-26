@@ -89,13 +89,7 @@ const Home = () => {
               <Link to="/phase2">
                 <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
                   <Lightbulb className="h-4 w-4" />
-                  Project Types
-                </Button>
-              </Link>
-              <Link to="/phase2/custom-software">
-                <Button size="lg" className="w-full gap-2 sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
-                  <Rocket className="h-4 w-4" />
-                  Custom Software
+                  Project Types - Phase 2
                 </Button>
               </Link>
               <Button

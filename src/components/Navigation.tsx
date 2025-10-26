@@ -14,7 +14,6 @@ const Navigation = () => {
     { path: "/bibliography", label: "Bibliography", icon: FileText },
     { path: "/generator", label: "Process Generator", icon: Settings },
     { path: "/phase2", label: "Phase 2 Process", icon: Layers },
-    { path: "/phase2/custom-software", label: "Custom Software Project", icon: Rocket },
   ];
 
   return (

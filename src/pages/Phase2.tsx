@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import LargeGovernmentProjects from "../components/LargeGovernmentProjects";
+import CustomSoftwareProjects from "../components/CustomSoftwareProjects";
 
 const phases = [
   {
@@ -493,6 +494,11 @@ const Phase2 = () => {
       {/* Large Government Projects Section */}
       <div style={{ marginTop: "4rem", borderTop: "3px solid #e5e7eb", paddingTop: "3rem" }}>
         <LargeGovernmentProjects />
+      </div>
+
+      {/* Custom Software Projects Section */}
+      <div style={{ marginTop: "4rem", borderTop: "3px solid #e5e7eb", paddingTop: "3rem" }}>
+        <CustomSoftwareProjects />
       </div>
     </div>
   );
